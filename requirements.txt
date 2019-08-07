@@ -1,5 +1,5 @@
 Django
 Pillow
 gunicorn
-tensorflow
+tensorflow-gpu
 WhiteNoise

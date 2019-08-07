@@ -2,3 +2,5 @@
 *.pyc
 *.sqlite3
 staticfiles/
+.cenv
+classify_image/megadetector/*.pb
