@@ -27,6 +27,7 @@ DEBUG = False
 ALLOWED_HOSTS = [
     'tf-classify.herokuapp.com',
     '127.0.0.1',
+    'medici01.snu.vision'
 ]
 
 # Application definition
@@ -123,3 +124,4 @@ STATICFILES_DIRS = (
 )
 
 STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
+DATA_UPLOAD_MAX_MEMORY_SIZE = 10485760
