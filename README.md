@@ -1,39 +1,47 @@
-# ImageClassification-Server
+# The Natural Conservancy(TNC) Image Classification Server
 Image classification with Web API and UI.<br>
-It's is written in Django along with Tensorflow uing [Google's Inception v3 model](https://storage.googleapis.com/download.tensorflow.org/models/inception_dec_2015.zip)<br>
-The web interface is made using [materializecss](http://materializecss.com/) and [jQuery](https://jquery.com/)<br>
-It is extension of [this](https://github.com/DeepBlueCitzenService/Tensorflow-Server) project.
+It's is written in Django and React along with Tensorflow. Image classification model is based on MegaDetector v3 model from [https://github.com/microsoft/CameraTraps].
 
-## Add
+## Setup
+There are three different setups needed to be done for Django, React and model parts, respectively.
+
+### Model setup
+Install python packages and download megadetector_v3.pb
 ```
+$ cd /path/to/this/repo
+$ bash setup.sh
+```
+
+### Django setup
+```
+$ cd /path/to/this/repo
 $ cd tf_inception
 ```
-In settings.py, add ALLOWED_HOSTS and CORS_ORIGIN_WHITELIST. For CORS_ORIGIN_WHITELIST, add the host name with port number. For example, 'http://medici01.snu.vision:7018'
+In settings.py, add ALLOWED_HOSTS and CORS_ORIGIN_WHITELIST. For CORS_ORIGIN_WHITELIST, add the host name with port number. For example, 'http://website.com:7018'
 
+### React setup
 ```
-$ cd ../react/webpack
+$ cd /path/to/this/repo
+$ cd react/webpack
 ```
-In webpack.config.dev.js, add port number and host in devServer. For example, port: 7018, host: 'medici01.snu.vision'.
+In webpack.config.dev.js, add port number and host in devServer. For example, port: 7018, host: 'website.com'. Notice that the port number used in this setup should be different from the one used in Django.
 
 
 ## Usage
 
-To run the server on localhost:
+To run the server on localhost,
 
 ```
-$ pip3 install -r requirements.txt
-$ python3 manage.py collectstatic
-$ python3 manage.py runserver
-
+$ cd /path/to/this/repo
+$ python manage.py collectstatic
+$ python manage.py runserver
 ```
 
+In the different terminal window,
+```
+$ npm run start
+```
 
-
-## Web Interface
-The Web Interface can be found at [http://tf-classify.herokuapp.com](http://tf-classify.herokuapp.com)
-
-## Web API
-You can classify using web API by sending a POST request at [http://tf-classify.herokuapp.com/classify_image/classify/api/](http://tf-classify.herokuapp.com/classify_image/classify/api/)<br>
 
 #### Input
 Parameter | Type                           | Description
@@ -52,13 +60,3 @@ confidence   | category, float     | pair of category and it's confidence
 
 Note: *category* is not paramater name but string of the category.<br>
 Example:  {"success": true, "confidence": {  "mongoose": 0.87896, "hare": 0.00123 }}
-
-
-## Using Retrained Inception Model
-* Retrain the model using your images. Refer [here](https://www.tensorflow.org/tutorials/image_retraining).
-* [Fork](https://github.com/CCD-1997/image-classify-server#fork-destination-box) this repo
-* Replace the generated graph and label files in `/classify_image/inception_model/`
-* Deploy the Django project
-
-## Contribute
-I am just beginner. If you find any bugs or want to improve the project, fell free to do it uisng pull request.
