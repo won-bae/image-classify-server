@@ -1,4 +1,4 @@
-# The Natural Conservancy(TNC) Image Classification Server
+# TNC Image Classification Server
 Image classification with Web API and UI.<br>
 It's is written in Django and React along with Tensorflow. Image classification model is based on MegaDetector v3 model from [https://github.com/microsoft/CameraTraps].
 
