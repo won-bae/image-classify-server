@@ -4,6 +4,18 @@ It's is written in Django along with Tensorflow uing [Google's Inception v3 mode
 The web interface is made using [materializecss](http://materializecss.com/) and [jQuery](https://jquery.com/)<br>
 It is extension of [this](https://github.com/DeepBlueCitzenService/Tensorflow-Server) project.
 
+## Add
+```
+$ cd tf_inception
+```
+In settings.py, add ALLOWED_HOSTS and CORS_ORIGIN_WHITELIST. For CORS_ORIGIN_WHITELIST, add the host name with port number. For example, 'http://medici01.snu.vision:7018'
+
+```
+$ cd ../react/webpack
+```
+In webpack.config.dev.js, add port number and host in devServer. For example, port: 7018, host: 'medici01.snu.vision'.
+
+
 ## Usage
 
 To run the server on localhost:
@@ -12,7 +24,10 @@ To run the server on localhost:
 $ pip3 install -r requirements.txt
 $ python3 manage.py collectstatic
 $ python3 manage.py runserver
+
 ```
+
+
 
 ## Web Interface
 The Web Interface can be found at [http://tf-classify.herokuapp.com](http://tf-classify.herokuapp.com)
@@ -32,10 +47,10 @@ Note: you need to send either 'image' or 'image64'
 #### Result
 Parameter    | Type                | Description
 ------------ | ------------------- | --------------------------------------------
-success      | bool                | Whether classification was sucessfuly or not 
+success      | bool                | Whether classification was sucessfuly or not
 confidence   | category, float     | pair of category and it's confidence
 
-Note: *category* is not paramater name but string of the category.<br> 
+Note: *category* is not paramater name but string of the category.<br>
 Example:  {"success": true, "confidence": {  "mongoose": 0.87896, "hare": 0.00123 }}
 
 

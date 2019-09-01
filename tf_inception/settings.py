@@ -26,13 +26,13 @@ DEBUG = False
 
 ALLOWED_HOSTS = [
     'tf-classify.herokuapp.com',
-    '127.0.0.1',
-    'medici01.snu.vision'
+    '127.0.0.1'
 ]
 
 # Application definition
 
 INSTALLED_APPS = [
+    'corsheaders',
     'django.contrib.auth',
     'django.contrib.contenttypes',
     'django.contrib.sessions',
@@ -42,6 +42,8 @@ INSTALLED_APPS = [
 ]
 
 MIDDLEWARE = [
+    'corsheaders.middleware.CorsMiddleware',
+    'django.middleware.common.CommonMiddleware',
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
@@ -97,6 +99,10 @@ AUTH_PASSWORD_VALIDATORS = [
         'NAME': 'django.contrib.auth.password_validation.NumericPasswordValidator',
     },
 ]
+
+CORS_ORIGIN_WHITELIST = [
+]
+
 
 # Internationalization
 # https://docs.djangoproject.com/en/1.10/topics/i18n/
